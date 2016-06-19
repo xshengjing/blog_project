@@ -1,43 +1,18 @@
 {% extends 'base.html' %}
-{% load  staticfiles %}
-
+{% load staticfiles %}
 {% block left_content %}
-
- {% include "ad.html" %}
-
-     <div class="topnews">
+    {% include 'ad.html' %}
+    <div class="topnews">
       <h2>最新文章</h2>
-         {% for article in article_list %}
+      {% for article in article_list %}
       <div class="blogs">
         <ul>
-          <h3><a href="/">{{  article.title }}</a></h3>
+          <h3><a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a></h3>
           <p>{{ article.desc }}</p>
-          <p class="autor"><span class="lm f_l">{% for tag in article.tag.all %}<a href="/">{{ tag.name }}</a>&nbsp;</span>{% endfor %}<span class="dtime f_l">{{ article.date_publish}}</span><span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span><span class="pingl f_r">评论（<a href="/">{{ article.comment.all.count }}</a>）</span></p>
-        </ul>                                                                                                            {#&nbsp;  空格#}
-      </div>
-         {% endfor %}
-
-      <div class="blogs">
-        <ul>
-          <h3><a href="/">教你怎样用欠费手机拨打电话</a></h3>
-          <p>初次相识的喜悦，让你觉得似乎找到了知音。于是，对于投缘的人，开始了较频繁的交往。渐渐地，初识的喜悦退尽，接下来就是仅仅保持着联系，平淡到偶尔在节假曰发短信互致问候...</p>
-          <p class="autor"><span class="lm f_l"><a href="/">个人博客</a></span><span class="dtime f_l">2014-02-19</span><span class="viewnum f_r">浏览（<a href="/">{{ article. }}</a>）</span><span class="pingl f_r">评论（<a href="/">30</a>）</span></p>
+          <p class="autor"><span class="lm f_l">{% for tag in article.tag.all %}<a href="/">{{ tag.name }}</a>&nbsp;</span>{% endfor %}<span class="dtime f_l">{{ article.date_publish | date:'Y-m-d' }}</span><span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span><span class="pingl f_r">评论（<a href="/">{{ article.comment_set.all.count }}</a>）</span></p>
         </ul>
       </div>
-      <div class="blogs">
-        <ul>
-          <h3><a href="/">原来以为，一个人的勇敢是，删掉他的手机号码...</a></h3>
-          <p>原来以为，一个人的勇敢是，删掉他的手机号码、QQ号码等等一切，努力和他保持距离。等着有一天，习惯不想念他，习惯他不在身边,习惯时间把他在我记忆里的身影磨蚀干净... </p>
-          <p class="autor"><span class="lm f_l"><a href="/">个人博客</a></span><span class="dtime f_l">2014-02-19</span><span class="viewnum f_r">浏览（<a href="/">459</a>）</span><span class="pingl f_r">评论（<a href="/">30</a>）</span></p>
-        </ul>
-      </div>
-
+      {% endfor %}
     </div>
-  <div id="pagination">
-    <ul id="pagination-flickr">
-    <li class="previous-off">&laquo;上一页</li>
-      <li class="active">1/10</li>
-      <li class="next"><a href="?page=8">下一页 &raquo;</a></li>
-   </ul>
-   </div>
+    {% include 'pagination.html' %}
 {% endblock %}

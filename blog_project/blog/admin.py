@@ -4,17 +4,18 @@ from models import *
 
 # Register your models here.
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title','desc','click_count',)
-    list_display_links = ('title','desc',)
+
+    list_display = ('title', 'desc', 'click_count',)
+    list_display_links = ('title', 'desc', )
     list_editable = ('click_count',)
 
     fieldsets = (
-        (None,{
-            'fields':('title','desc','content','user','category','tag',)
+        (None, {
+            'fields': ('title', 'desc', 'content', 'user', 'category', 'tag', )
         }),
-        ('高级设置',{
-            'classes':('collapse',),
-            'fields':('click_count','is_recommend',)
+        ('高级设置', {
+            'classes': ('collapse',),
+            'fields': ('click_count', 'is_recommend',)
         }),
     )
 
@@ -27,7 +28,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 admin.site.register(User)
 admin.site.register(Tag)
-admin.site.register(Article,ArticleAdmin)
+admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category)
 admin.site.register(Comment)
 admin.site.register(Links)

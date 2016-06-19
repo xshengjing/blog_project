@@ -6339,7 +6339,7 @@ KindEditor.plugin('baidumap', function(K) {
 					var centerObj = map.getCenter();
 					var center = centerObj.lng + ',' + centerObj.lat;
 					var zoom = map.getZoom();
-					var url = [checkbox[0].checked ? self.pluginsPath + 'baidumap/index.html' : 'http://api.map.baidu.com/staticimage',
+					var url = [checkbox[0].checked ? self.pluginsPath + 'baidumap/base.html' : 'http://api.map.baidu.com/staticimage',
 						'?center=' + encodeURIComponent(center),
 						'&zoom=' + encodeURIComponent(zoom),
 						'&width=' + mapWidth,
@@ -7536,7 +7536,7 @@ KindEditor.plugin('link', function(K) {
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
 
-// Google Maps: http://code.google.com/apis/maps/index.html
+// Google Maps: http://code.google.com/apis/maps/base.html
 
 KindEditor.plugin('map', function(K) {
 	var self = this, name = 'map', lang = self.lang(name + '.');
